@@ -21,5 +21,5 @@ jobs:
 
       - name: Desplegar cambios en servidor
         run: |
-          ssh -o StrictHostKeyChecking=yes alumno@137.184.127.11 "cd ~/lemp-sites/marcos_altamirano && git pull"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes alumno@137.184.127.11 "cd ~/lemp-sites/marcos_altamirano && git pull"
 
