@@ -1,4 +1,4 @@
-// ccambio de prueba para CI/CD
+// cambio de prueba para CI/CD
 function sum(a, b) {
   return a + b;
 }
