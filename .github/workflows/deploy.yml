@@ -1,12 +1,24 @@
-name: CD - Deploy con Git Pull
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ main ]
 
 jobs:
+  ci-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Validar sintaxis HTML
+        run: |
+          sudo apt-get update && sudo apt-get install -y tidy
+          tidy -errors -q html/*.html || true
+
   deploy:
     runs-on: ubuntu-latest
+    needs: ci-check
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -24,3 +36,4 @@ jobs:
             cd ~/lemp-sites/marcos_altamirano &&
             git pull origin main
           "
+
